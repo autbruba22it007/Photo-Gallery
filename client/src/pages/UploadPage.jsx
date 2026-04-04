@@ -9,7 +9,7 @@ function UploadPage({ folder }) {
 
   const [images, setImages] = useState([]);
   useEffect(() => {
-  fetch(`http://localhost:5000/api/images/${folder.id}`)
+  fetch(`https://photo-gallery-backend-1605.onrender.com/api/images/${folder.id}`)
     .then(res => res.json())
     .then(data => setImages(data))
     .catch(err => console.log(err));
@@ -29,7 +29,7 @@ const prevImage = () => {
 
 const handleDelete = async (id) => {
   try {
-    await fetch(`http://localhost:5000/api/images/${id}`, {
+    await fetch(`https://photo-gallery-backend-1605.onrender.com/api/images/${id}`, {
       method: "DELETE",
     });
 
@@ -93,14 +93,14 @@ const handleReplaceClick = (id) => {
 
   try {
     // 1. Upload new image to backend
-    const res = await fetch("http://localhost:5000/api/images", {
+    const res = await fetch("https://photo-gallery-backend-1605.onrender.com/api/images", {
       method: "POST",
       body: formData,
     });
     const newImage = await res.json();
 
     // 2. Delete old image from backend
-    await fetch(`http://localhost:5000/api/images/${replaceId}`, {
+    await fetch(`https://photo-gallery-backend-1605.onrender.com/api/images/${replaceId}`, {
       method: "DELETE",
     });
 
@@ -127,7 +127,7 @@ const handleReplaceClick = (id) => {
     formData.append("folder_id", folder.id);
 
     try {
-      const res = await fetch("http://localhost:5000/api/images", {
+      const res = await fetch("https://photo-gallery-backend-1605.onrender.com/api/images", {
         method: "POST",
         body: formData,
       });
@@ -165,7 +165,7 @@ const handleReplaceClick = (id) => {
       {/* Image Cards */}
       {images.map((img, index) => (
         <div className="image-card" key={img.id} onClick={() => { if (editingId === img.id) return; setActiveIndex(index);}}>
-          <img src={`http://localhost:5000${img.filepath}`} alt="images" />
+          <img src={`https://photo-gallery-backend-1605.onrender.com${img.filepath}`} alt="images" />
 
           {editingId !== img.id && (
           <div className="image-edit-btn" onClick={(e) => {e.stopPropagation();
@@ -212,7 +212,7 @@ const handleReplaceClick = (id) => {
             </button>
       
             <img
-               src={`http://localhost:5000${images[activeIndex].filepath}`}
+               src={`https://photo-gallery-backend-1605.onrender.com${images[activeIndex].filepath}`}
                className="viewer-image"
             />
 

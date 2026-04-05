@@ -14,7 +14,11 @@ if (!fs.existsSync(uploadsDir)) {
 
 app.use(cors());
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.json({ 
+    db: process.env.DATABASE_URL ? "DB URL found ✅" : "DB URL missing ❌"
+  });
+});
 
 const folderRoutes = require("./routes/folderRoutes");
 app.use("/api/folders", folderRoutes);

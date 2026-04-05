@@ -10,7 +10,7 @@ function GalleryHome() {
   const [folders, setFolders] = useState([]);
 
   useEffect(() => {
-  fetch("https://photo-gallery-backend-1605.onrender.com/api/folders")
+  fetch("https://photo-gallery-backend-l605.onrender.com/api/folders")
     .then(res => res.json())
     .then(data => setFolders(data))
     .catch(err => console.log(err));
@@ -24,7 +24,7 @@ function GalleryHome() {
 
   try {
 
-    const res = await fetch("https://photo-gallery-backend-1605.onrender.com/api/folders", {
+    const res = await fetch("https://photo-gallery-backend-l605.onrender.com/api/folders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -46,7 +46,7 @@ function GalleryHome() {
 
   const renameFolder = async (id, newName) => {
     try {
-      const res = await fetch(`https://photo-gallery-backend-1605.onrender.com/api/folders/${id}`,{
+      const res = await fetch(`https://photo-gallery-backend-l605.onrender.com/api/folders/${id}`,{
         method: "PUT",
         headers:{
           "Content-Type": "application/json"
@@ -68,7 +68,7 @@ function GalleryHome() {
 const deleteFolder = async (id) => {
   try {
 
-    await fetch(`https://photo-gallery-backend-1605.onrender.com/api/folders/${id}`, {
+    await fetch(`https://photo-gallery-backend-l605.onrender.com/api/folders/${id}`, {
       method: "DELETE"
     });
     

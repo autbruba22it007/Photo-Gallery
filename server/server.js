@@ -1,8 +1,15 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 
 const app = express();
+
+// Auto-create uploads folder
+const uploadsDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 
 app.use(cors());
 app.use(express.json());
@@ -11,7 +18,6 @@ app.use(express.json());
 const folderRoutes = require("./routes/folderRoutes");
 app.use("/api/folders", folderRoutes);
 
-const path = require("path");
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const imageRoutes = require("./routes/imageRoutes");
